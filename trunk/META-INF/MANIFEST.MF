@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ciba
+Bundle-SymbolicName: net.bioclipse.bioinformatics.ciba; singleton:=true
+Bundle-Version: 1.0.0.0
+Bundle-Activator: net.bioclipse.bioinformatics.ciba.Activator
+Export-Package: net.bioclipse.bioinformatics.ciba, net.bioclipse.bioinformatics.ciba.business
+Require-Bundle: net.bioclipse.core,
+ net.bioclipse.scripting,
+ net.bioclipse.biojava;bundle-version="2.2.0",
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.databinding,
+ org.eclipse.core.databinding.beans,
+ org.eclipse.core.databinding.observable,
+ org.eclipse.core.databinding.property,
+ org.eclipse.core.expressions,
+ org.eclipse.core.resources;bundle-version="3.5.1",
+ org.eclipse.equinox.p2.core;bundle-version="1.0.101",
+ org.eclipse.jface.databinding,
+ org.eclipse.ui.navigator,
+ org.eclipse.ui.ide;bundle-version="3.5.1",
+ org.eclipse.ui.console,
+ com.ibm.icu
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.apache.commons.exec,
+ org.apache.log4j
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: src/net/bioclipse/bioinformatics/ciba/applications/,
+ .

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="net.bioclipse.bioinformatics.ciba.category"
+            name="CIBA Wizards">
+      </category>
+      <wizard
+            category="net.bioclipse.bioinformatics.ciba.category"
+            class="net.bioclipse.bioinformatics.ciba.wizards.clustalw.ClustalWizard"
+            icon="icons/customIcons/clustalw_16x16.gif"
+            id="net.bioclipse.bioinformatics.ciba.wizards.clustalw"
+            name="ClustalW">
+      </wizard>
+      <wizard
+            canFinishEarly="false"
+            category="net.bioclipse.bioinformatics.ciba.category"
+            class="net.bioclipse.bioinformatics.ciba.wizards.phylip.DNADist.DNADistWizard"
+            hasPages="true"
+            icon="applications/win32/phylip3.69/icons/dna.ico"
+            id="net.bioclipse.bioinformatics.ciba.wizards.phylipDNADist"
+            name="Phylip - DNADist">
+      </wizard>
+      <wizard
+            category="net.bioclipse.bioinformatics.ciba.category"
+            class="net.bioclipse.bioinformatics.ciba.wizards.phylip.Neighbor.NeighborWizard"
+            icon="applications/win32/phylip3.69/icons/dist.ico"
+            id="net.bioclipse.bioinformatics.ciba.wizards.phylipNeighbor"
+            name="Phylip - Neighbor">
+      </wizard>
+      <wizard
+            category="net.bioclipse.bioinformatics.ciba.category"
+            class="net.bioclipse.bioinformatics.ciba.wizards.phylip.Drawtree.DrawtreeWizard"
+            icon="applications/win32/phylip3.69/icons/contrast.ico"
+            id="net.bioclipse.bioinformatics.ciba.wizards.phylipDrawtree"
+            name="Phylip - Drawtree">
+      </wizard>
+      <wizard
+            category="net.bioclipse.bioinformatics.ciba.category"
+            class="net.bioclipse.bioinformatics.ciba.wizards.CibaWorkflowWizard"
+            id="net.bioclipse.bioinformatics.ciba.workflowWizard"
+            name="Workflow">
+      </wizard>
+   </extension>
+   
+   <extension point="org.eclipse.ui.navigator.navigatorContent">
+    <commonWizard
+          menuGroupId="foo"
+          type="new"
+          wizardId="net.bioclipse.bioinformatics.ciba.wizards.clustalw">
+      <enablement>
+        <or>
+          <adapt type="org.eclipse.core.resources.IFolder" />
+          <adapt type="org.eclipse.core.resources.IProject" />
+          <adapt type="org.eclipse.core.resources.IWorkspaceRoot" />
+        </or>
+      </enablement>
+    </commonWizard>
+    <commonWizard
+          menuGroupId="foo"
+          type="new"
+          wizardId="net.bioclipse.bioinformatics.ciba.wizards.phylipDNADist">
+       <enablement>
+          <or>
+             <adapt
+                   type="org.eclipse.core.resources.IFolder">
+             </adapt>
+             <adapt
+                   type="org.eclipse.core.resources.IProject">
+             </adapt>
+             <adapt
+                   type="org.eclipse.core.resources.IWorkspaceRoot">
+             </adapt>
+          </or>
+       </enablement>
+    </commonWizard>
+    <commonWizard
+          menuGroupId="foo"
+          type="new"
+          wizardId="net.bioclipse.bioinformatics.ciba.wizards.phylipDrawtree">
+       <enablement>
+          <or>
+             <adapt
+                   type="org.eclipse.core.resources.IFolder">
+             </adapt>
+             <adapt
+                   type="org.eclipse.core.resources.IProject">
+             </adapt>
+             <adapt
+                   type="org.eclipse.core.resources.IWorkspaceRoot">
+             </adapt>
+          </or>
+       </enablement>
+    </commonWizard>
+    <commonWizard
+          menuGroupId="foo"
+          type="new"
+          wizardId="net.bioclipse.bioinformatics.ciba.wizards.phylipNeighbor">
+       <enablement>
+          <or>
+             <adapt
+                   type="org.eclipse.core.resources.IFolder">
+             </adapt>
+             <adapt
+                   type="org.eclipse.core.resources.IProject">
+             </adapt>
+             <adapt
+                   type="org.eclipse.core.resources.IWorkspaceRoot">
+             </adapt>
+          </or>
+       </enablement>
+    </commonWizard>
+  </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="net.bioclipse.bioinformatics.ciba.wizardShortcut">
+         <newWizardShortcut
+               id="net.bioclipse.bioinformatics.ciba.wizards.phylipWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         id="sampleNature"
+         name="Sample Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="net.bioclipse.bioinformatics.ciba.main.CibaNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.equinox.preferences.preferences">
+      <initializer
+            class="net.bioclipse.bioinformatics.ciba.main.CibaPreferences">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="net.bioclipse.bioinformatics.ciba.main.CibaPreferencesPage"
+            id="net.bioclipse.bioinformatics.ciba.preferences"
+            name="CIBA Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/phylip.gif"
+            id="net.bioclipse.bioinformatics.ciba.decorator"
+            label="CIBA Project"
+            lightweight="true"
+            location="REPLACE"
+            state="true">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IResource">
+               </objectClass>
+               <or>
+                  <objectClass
+                        name="org.eclipse.core.resources.IProject">
+                  </objectClass>
+                  <objectClass
+                        name="org.eclipse.core.resources.IFile">
+                  </objectClass>
+               </or>
+            </and>
+         </enablement>
+      </decorator>
+      <decorator
+            adaptable="true"
+            icon="icons/sample_decorator.gif"
+            id="net.bioclipse.bioinformatics.ciba.decorator"
+            label="Resource Decorator"
+            lightweight="true"
+            location="TOP_LEFT"
+            state="true">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IResource">
+               </objectClass>
+               <or>
+                  <objectClass
+                        name="org.eclipse.core.resources.IProject">
+                  </objectClass>
+                  <objectClass
+                        name="org.eclipse.core.resources.IFile">
+                  </objectClass>
+               </or>
+            </and>
+         </enablement>
+      </decorator>
+   </extension>
+
+</plugin>
