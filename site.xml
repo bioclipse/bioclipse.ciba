@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/net.bioclipse.bioinformatics.ciba_feature_1.0.0.jar" id="net.bioclipse.bioinformatics.ciba_feature" version="1.0.0">
+   <feature url="tree/master/features/net.bioclipse.bioinformatics.ciba_feature_1.0.0.jar" id="net.bioclipse.bioinformatics.ciba_feature" version="1.0.0">
       <category name="net.bioclipse.bioinformatics.ciba_updateCategory"/>
    </feature>
    <category-def name="net.bioclipse.bioinformatics.ciba_updateCategory" label="CIBA Update"/>
